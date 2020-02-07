@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <math.h>
 using namespace std;
 
 void stat(const double[],int,double []);
@@ -18,3 +19,32 @@ int main()
 }
 
 //Write definition of stat() here 
+void stat(const double x[],int y, double z[])
+{
+	double max = x[0],min = x[0];
+	for(int i=0;i<y;i++)
+	{
+		if(x[i]>max) 
+		{
+			max=x[i];
+		}
+		if(x[i]<min) 
+		{
+			min=x[i];
+		}
+	}
+	z[2]=max;
+	z[3]=min;
+	double lavg = 0,favg,avg; 
+	for(int i=0;i<y;i++)
+	{
+		lavg += pow(x[i],2);
+		favg += x[i];
+		avg = favg/y;
+	}
+	z[0] = avg;
+	double sd;
+	sd = sqrt(lavg/y-pow(avg,2));
+	z[1] = sd;
+
+}
